@@ -87,7 +87,7 @@ public class SellerDaoJDBC implements SellerDao {
 
 	@Override
 	public void deleteById(Integer id) {
-PreparedStatement st = null;
+		PreparedStatement st = null;
 		
 		try {
 			
@@ -111,7 +111,7 @@ PreparedStatement st = null;
 		
 		try {
 			
-			st = conn.prepareStatement("SELECT seller.*, department.Name as DepName FROM seller INNER JOIN department ON seller.DepartmentId = department.Id WHERE seller.Id = ?");
+			st = conn.prepareStatement("SELECT seller.*, department.Name as DepName FROM seller INNER JOIN department ON seller.DepartmentId = department.Id WHERE department.Id = ?");
 			st.setInt(1, id);
 			rs = st.executeQuery();
 			
